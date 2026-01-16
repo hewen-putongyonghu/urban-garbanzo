@@ -16,7 +16,9 @@ body {
 }
 
 canvas {
-    border: 5px solid #fff;
-    background-color: #000;
-    cursor: none; /* 在画布内隐藏鼠标指针 */
+    width: 95vw;        /* 宽度占屏幕 95% */
+    height: auto;       /* 高度按比例缩放 */
+    max-width: 800px;
+    border: 3px solid #fff;
+    touch-action: none; /* 关键：阻止浏览器默认的滑动刷新和缩放行为 */
 }

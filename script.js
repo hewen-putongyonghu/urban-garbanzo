@@ -30,6 +30,29 @@ document.addEventListener("mousemove", (e) => {
     let mouseY = e.clientY - rect.top;
     player.y = mouseY - paddleHeight / 2;
 });
+// 触摸控制逻辑
+canvas.addEventListener("touchstart", handleTouch, false);
+canvas.addEventListener("touchmove", handleTouch, false);
+
+function handleTouch(e) {
+    // 阻止屏幕滚动
+    e.preventDefault();
+    
+    let rect = canvas.getBoundingClientRect();
+    let touch = e.touches[0]; // 获取第一个手指的坐标
+    
+    // 计算触摸点相对于画布的 Y 坐标
+    // 因为 CSS 缩放了画布，我们需要计算缩放比例
+    let scaleY = canvas.height / rect.height;
+    let mouseY = (touch.clientY - rect.top) * scaleY;
+    
+    // 更新玩家挡板位置
+    player.y = mouseY - paddleHeight / 2;
+
+    // 边界检查，防止挡板飞出画布
+    if (player.y < 0) player.y = 0;
+    if (player.y > canvas.height - paddleHeight) player.y = canvas.height - paddleHeight;
+}
 
 // 绘制函数
 function drawRect(x, y, w, h, color) {

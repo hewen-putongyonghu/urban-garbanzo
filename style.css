@@ -1,0 +1,22 @@
+body {
+    background-color: #222;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+#scoreboard {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+canvas {
+    border: 5px solid #fff;
+    background-color: #000;
+    cursor: none; /* 在画布内隐藏鼠标指针 */
+}
